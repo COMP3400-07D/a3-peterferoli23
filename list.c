@@ -166,9 +166,22 @@ void ll_append(struct ll_node *head, int data) {
 }
 
 /**
- * TODO: Describe what the function does
+ * converts an array into a linked list
+ *
+ *@param len the length of the array being converted
  */
 struct ll_node *ll_fromarray(int* data, int len) {
+    if (len==0) {
+        return NULL;
+    }
+    
+    struct ll_node *newList = ll_create(data[0]); //initiates the linked list with its first value
+
+    for (int i = 1; i < len; i++) {
+        ll_append(newList, data[i]);
+    }
+
+    return newList;
 
 }
 
