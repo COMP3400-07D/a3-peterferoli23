@@ -139,10 +139,30 @@ void ll_destroy(struct ll_node *head) {
 }
 
 /**
- * TODO: Describe what the function does
+ * Appends newly created nodes to the end of a list
+ *
+ * @param data the value which will be appended to the list
  */
 void ll_append(struct ll_node *head, int data) {
- 
+
+    if (head == NULL) { //if the list is empty in the first place
+    //cannot append
+    return;
+   }
+
+    struct ll_node* node = malloc(sizeof(struct ll_node));
+
+   node->data = data;
+   node->next = NULL;
+
+   struct ll_node *current = head; // for traversal
+   while (current->next != NULL) {
+    current = current->next;
+   }
+
+   current->next = node;
+   //appends the node onto the end of the tail
+
 }
 
 /**
