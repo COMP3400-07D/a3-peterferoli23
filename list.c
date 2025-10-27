@@ -108,17 +108,34 @@ int *ll_toarray(struct ll_node *head) {
 }
 
 /**
- * TODO: Describe what the function does
+ * Creates a linked list node, and returns it.
+ *
+ * @return returns the new linked list & node
  */
 struct ll_node *ll_create(int data) {
-   
+   struct ll_node* node = malloc(sizeof(struct ll_node));
+   if (node == NULL) {
+    return NULL; //failed to allocate memory
+   } 
+
+   node->data = data;
+   node->next = NULL;
+
+   return node;
 }
 
 /**
- * TODO: Describe what the function does
+ * Frees all values in the linked list
  */
 void ll_destroy(struct ll_node *head) {
-    
+    struct ll_node* current = head; //for iterating through the list
+    struct ll_node* node2; //for saving the value of current
+
+    while (current != NULL) {
+        node2 = current->next;
+        free(current);
+        current = node2;
+    }
 }
 
 /**
