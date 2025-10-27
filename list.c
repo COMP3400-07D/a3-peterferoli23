@@ -41,7 +41,7 @@ int ll_size(struct ll_node *head) {
   }
 
   struct ll_node *current = head;
-  int track = 0;
+  int track = 1;
   while (current-> next != NULL) {
         track+=1;
         current = current -> next;
