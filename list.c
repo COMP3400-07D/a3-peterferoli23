@@ -72,10 +72,39 @@ struct ll_node *ll_find(struct ll_node *head, int value) {
 }
 
 /**
- * TODO: Describe what the function does
+ * Turns the linked list into an array
+ *
+ * @return returns the newly created array
  */
 int *ll_toarray(struct ll_node *head) {
-   
+    int *linkedArray; //for later use
+    if (head == NULL) {
+    return NULL; //linked list is empty, no need to check
+    }
+    
+    // need to find the size first, grabbing from ll_size
+    struct ll_node *current = head;
+    int track = 0;
+    while (current != NULL) {
+        track+=1;
+        current = current -> next;
+    }
+
+    linkedArray = (int *) malloc(track*sizeof(int));
+    if (linkedArray == NULL) {
+        return NULL;
+    }
+
+    current = head; //resetting for continued use.
+
+    int arrVals = 0;
+    while (current != NULL) {
+        linkedArray[arrVals] = current->data;
+        current = current-> next;
+        arrVals+=1;
+    }
+    return linkedArray;
+
 }
 
 /**
