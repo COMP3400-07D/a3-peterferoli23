@@ -31,10 +31,22 @@ struct ll_node *ll_tail(struct ll_node *head) {
 }
 
 /**
- * TODO: Describe what the function does
+ * Finds the size of the linked list
+ *
+ * @return returns the size of the linked list
  */
 int ll_size(struct ll_node *head) {
-  
+  if (head == NULL) {
+    return 0; //linked list has no values attached, so it is 0 in length
+  }
+
+  struct ll_node *current = head;
+  int track = 0;
+  while (current-> next != NULL) {
+        track+=1;
+        current = current -> next;
+    }
+    return track;
 }
 
 /**
