@@ -174,7 +174,7 @@ struct ll_node *ll_fromarray(int* data, int len) {
     if (len==0) {
         return NULL;
     }
-    
+
     struct ll_node *newList = ll_create(data[0]); //initiates the linked list with its first value
 
     for (int i = 1; i < len; i++) {
@@ -186,9 +186,29 @@ struct ll_node *ll_fromarray(int* data, int len) {
 }
 
 /**
- * TODO: Describe what the function does
+ * Removes a specific value from the linked list
+ *
+ *@param value value to be removed
  */
 struct ll_node *ll_remove(struct ll_node *head, int value) {
+
+    struct ll_node *current = head;
+    struct ll_node *prev = NULL;
+
+    while (current != NULL) {
+        if (current->value == value) {
+            if (prev == NULL) {
+                head = current->next; // node is head
+            } else {
+                prev->next = current->next;
+            }
+            free(current);
+            return head; // return possibly new head
+        }
+        prev = current;
+        current = current->next;
+    }
+    return head; // value not found, return original head
 
 }
 
