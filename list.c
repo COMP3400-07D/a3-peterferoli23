@@ -50,10 +50,25 @@ int ll_size(struct ll_node *head) {
 }
 
 /**
- * TODO: Describe what the function does
+ * Searches through a linked list for VALUE, then returns the place in linked list
+ *
+ * @param value the value which is being looked for
+ * @return the node that has value within it
  */
 struct ll_node *ll_find(struct ll_node *head, int value) {
-   
+    if (head == NULL) {
+    return NULL; //linked list is empty, no need to check
+    }
+
+    struct ll_node *current = head;
+    while (current != NULL) {
+        if (current->value == value) {
+            return current;
+        }
+        current = current->next;
+    }
+    return NULL; //unable to find the value, return NULL
+  
 }
 
 /**
