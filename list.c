@@ -13,10 +13,21 @@ struct ll_node *ll_head(struct ll_node *head) {
 }
 
 /**
- * TODO: Describe what the function does
+ * returns the tail of the linked list
+ *
+ * @return returns null if head is null (empty list), or returns the tail of the list
  */
 struct ll_node *ll_tail(struct ll_node *head) {
-    
+    if (head == NULL) {
+        return NULL;
+    }
+
+    struct ll_node *current = head;
+    while (current-> next != NULL) {
+        current = current -> next;
+    }
+    return current;
+
 }
 
 /**
